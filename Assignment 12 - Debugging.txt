@@ -1,0 +1,83 @@
+*Dice
+
+"No bugs found"
+_____________________________________________________________________________________________
+
+*Simple Craps
+
+    public void playAgain() {
+        System.out.println("Would you like to play again? Type any key to continue or Type 'N' to quit.");
+        in = new Scanner(System.in);
+        String input = in.nextLine();
+        if (input.toLowerCase().equals("n")) {
+            System.out.println("The game has ended.");
+            playing = false;
+        } else {
+            phase1 = true;
+            playing = true;
+            startGame();
+        }
+    }
+
+"Found a bug where 'n ' would not input as n. The condition needs to trim the input."
+_____________________________________________________________________________________________
+
+* Bank Account
+
+void transferFrom(Account toAccount, double transferAmount) {
+        if (this.checkTransfer(transferAmount) == (true)) {
+            toAccount.balance -= transferAmount;
+            this.balance += transferAmount;
+
+        }
+
+}
+
+boolean checkTransfer(double transferAmount) {
+
+        if (this.balance - transferAmount >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+}
+
+
+"Found a bug where I had the Account objects backwards in the transfer method.
+ It would make a balance of 0 becomes -10 if transferred. I fixed the logic
+ behind the conditions involving the objects."
+
+_____________________________________________________________________________________________
+
+
+*Bowling Simulator (300 Score)
+
+for (int i = 0; i < bowlingScores[idxo].length - 1; i++) {
+
+                totalScore += bowlingScores[idxo][i];
+
+                if ((i != 0) && (i % 2 != 0) && (i < 18)) {
+                    if ((bowlingScores[idxo][i - 1] != 10)
+                            && (bowlingScores[idxo][i - 1] + bowlingScores[idxo][i] == 10)) {
+                        totalScore += bowlingScores[idxo][i + 1];
+                    }
+                }
+
+                if ((i != 0) && (i % 2 != 0) && (i < 18)) {
+                    if (bowlingScores[idxo][i - 1] == 10) {
+                        if(bowlingScores[idxo][i + 1] != 10) {
+                        totalScore += bowlingScores[idxo][i + 1] + bowlingScores[idxo][i + 2];
+                        } else if (bowlingScores[idxo][i + 1] == 10) {
+                            totalScore += bowlingScores[idxo][i + 1] + bowlingScores[idxo][i + 3];
+                        }
+                    }
+                }
+            }
+
+
+"I hard coded every bowl to be a strike and my total was 220. My total score method was
+not reading the right array[][] index for strikes. After adding another condition to
+check if it is a strike and the next bowl is a strike to i+1 & i+3 it gave me the correct
+final score of 300."
+
+_____________________________________________________________________________________________
